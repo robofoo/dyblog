@@ -7,10 +7,10 @@ categories:
 ---
 
 **tl;dr** Coming from a Microsoft web dev background I'm often surprised at how simple yet
-productive ruby can be. An example of this is a short ruby script I wrote to ping a list of urls and
+productive ruby can be. An example of this is a short (4 lines) ruby script I wrote to ping a list of urls and
 display summary results.
 
-***
+## Background
 
 I'll be honest, switching from the Microsoft stack to the rails stack was hard. But one 
 thing that helped me feel productive early on was focusing on ruby first. 
@@ -27,6 +27,7 @@ rubyist in me said, "come on man, just *solve the problem*. All you need is
 information and it's just text. Write a script 
 to ping the VPN servers and output results to the terminal. Simple."
 
+## The Program
 The basic command I wanted to run was `ping vpn.test.com`. In ruby, there are 
 several ways to get a string to run as if it were a command
 typed into your terminal shell. The simplest is probably backticks. So if you
