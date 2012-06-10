@@ -31,10 +31,10 @@ to ping the VPN servers and output results to the terminal. Simple."
 The basic command I wanted to run was `ping vpn.test.com`. In ruby, there are 
 several ways to get a string to run as if it were a command
 typed into your terminal shell. The simplest is probably backticks. So if you
-put `` `pwd` `` in a ruby script it would output something along the lines of
+put `` `pwd` `` in a ruby script it will output something along the lines of
 `/Users/Daniel/src`. 
 
-So to run ping all I'd need to do is `` `ping vpn.test.com` ``.
+So to run ping all you need to do is `` `ping vpn.test.com` ``.
 But I didn't want to run the command on just one url, I wanted it on a range.
 
 ```
@@ -45,7 +45,7 @@ ping vpn-3.test.com
 etc... about 20 urls like this
 ```
 
-Using ruby we can generate the list of commands like so:
+Using ruby we can generate the list of commands (string literals) like so:
 
 ```ruby
 commands = []   # array of commands
@@ -63,7 +63,7 @@ Now we have a small problem, the command we want to run is no longer a string
 literal. But it's easy enough to get around that by wrapping the command with
 `#{}`
 
-We also want to loop through and run each command:
+We also want to loop through and run each command. Here's how to do both:
 
 ``` ruby
 commands.each do |command|
@@ -71,7 +71,7 @@ commands.each do |command|
 end
 ```
 
-By default the `ping` command will continue pinging a url until a user quits it. 
+By default the `ping` command will continue pinging a url until a user cancels the command. 
 In order to ping one url and then move onto the next without any user intervention
 we need to specify a set number of times to ping a url. For that just add the `-c` flag
 along with number of times to ping. In your terminal, running `ping -c2 vpn-1.test.com`
