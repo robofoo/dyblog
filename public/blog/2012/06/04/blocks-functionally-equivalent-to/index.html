@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>dyblog.heroku.com</title>
+  <title>Procs and Lambdas - functionally equivalent to - dyblog.heroku.com</title>
   <meta name="author" content="Daniel Yoon">
 
   
-  <meta name="description" content="tl;dr Coming from a Microsoft web dev background I&#8217;m often surprised at how simple yet
-productive ruby can be. An example of this is a short &hellip;">
+  <meta name="description" content="tl:dr a beginner&#8217;s intro to ruby blocks and lambdas There are a lot of great blog posts about ruby blocks, procs and lambdas. So
+this reference &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ productive ruby can be. An example of this is a short &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dyblog.heroku.com/">
+  <link rel="canonical" href="http://dyblog.heroku.com/blog/2012/06/04/blocks-functionally-equivalent-to/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -63,81 +63,12 @@ productive ruby can be. An example of this is a short &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/08/ruby-productivity-ping-range-of-urls/">Ruby Productivity - Ping Range of Urls</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-08T17:07:00+08:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>tl;dr</strong> Coming from a Microsoft web dev background I&#8217;m often surprised at how simple yet
-productive ruby can be. An example of this is a short ruby script I wrote to ping a list of urls and
-display summary results.</p>
-
-<hr />
-
-<p>I&#8217;ll be honest, switching from the Microsoft stack to the rails stack was hard. But one
-thing that helped me feel productive early on was focusing on ruby first.
-Not only is ruby essential to becoming a good rails dev but the little wins you have
-with it along the way will boost your morale as you struggle through learning
-how all the various pieces work together.</p>
-
-<p>A few months back I wanted to find out which VPN server had the best ping. The
-MS dev in me suggested, &#8220;let&#8217;s make a web service to ping the VPN servers,
-then create a website that will list the results.&#8221; I was about to plug in my
-laptop to a power source and fire up Visual Studio (battery life is much shorter
-when I use VS) when the up and coming
-rubyist in me said, &#8220;come on man, just <em>solve the problem</em>. All you need is
-information and it&#8217;s just text. Write a script
-to ping the VPN servers and output results to the terminal. Simple.&#8221;</p>
-
-<p>The basic command I wanted to run was <code>ping vpn.test.com</code>. In ruby, there are
-several ways to get a string to run as if it were a command
-typed into your terminal shell. The simplest is probably backticks. So if you
-put <code>`pwd`</code> in a ruby script it would output something along the lines of
-<code>/Users/Daniel/src</code>.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/06/08/ruby-productivity-ping-range-of-urls/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/04/blocks-functionally-equivalent-to/">Procs and Lambdas - Functionally Equivalent To</a></h1>
+      <h1 class="entry-title">Procs and Lambdas - Functionally Equivalent To</h1>
     
     
       <p class="meta">
@@ -160,7 +91,7 @@ put <code>`pwd`</code> in a ruby script it would output something along the line
   </header>
 
 
-  <div class="entry-content"><p><em>tl:dr</em> a beginner&#8217;s intro to ruby blocks and lambdas</p>
+<div class="entry-content"><p><em>tl:dr</em> a beginner&#8217;s intro to ruby blocks and lambdas</p>
 
 <hr />
 
@@ -300,18 +231,53 @@ crystal clear, they&#8217;re functionally equivalent to:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Daniel Yoon</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2012-06-04T22:37:00+08:00" pubdate data-updated="true">Jun 4<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://dyblog.heroku.com/blog/2012/06/04/blocks-functionally-equivalent-to/" data-via="" data-counturl="http://dyblog.heroku.com/blog/2012/06/04/blocks-functionally-equivalent-to/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/08/ruby-productivity-ping-range-of-urls/" title="Next Post: Ruby Productivity - Ping Range of urls">Ruby Productivity - Ping Range of urls &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -336,6 +302,7 @@ crystal clear, they&#8217;re functionally equivalent to:</p>
 
   
 </aside>
+
 
     </div>
   </div>
