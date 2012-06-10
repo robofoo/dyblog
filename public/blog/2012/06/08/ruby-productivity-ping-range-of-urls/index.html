@@ -9,8 +9,30 @@
   <meta name="author" content="Daniel Yoon">
 
   
-  <meta name="description" content="tl;dr Coming from a Microsoft web dev background I&#8217;m often surprised at how simple yet
-productive ruby can be. An example of this is a short &hellip;">
+  <meta name="description" content="Ruby Productivity - Ping Range of Urls
+    
+    
+      
+        
+
+
+
+
+
+
+
+
+  
+
+
+Jun 8th, 2012
+        
+      
+    
+  
+
+
+tl;dr Coming &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -124,12 +146,12 @@ put <code>`pwd`</code> in a ruby script it would output something along the line
 <p>So to run ping all I&#8217;d need to do is <code>`ping vpn.test.com`</code>.
 But I didn&#8217;t want to run the command on just one url, I wanted it on a range.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ping vpn-1.test.com
+</pre></td><td class='code'><pre><code class='plain'><span class='line'>ping vpn-1.test.com
 </span><span class='line'>ping vpn-2.test.com
 </span><span class='line'>ping vpn-3.test.com
 </span><span class='line'>
@@ -138,7 +160,7 @@ But I didn&#8217;t want to run the command on just one url, I wanted it on a ran
 
 <p>Using ruby we can generate the list of commands like so:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -165,7 +187,7 @@ literal. But it&#8217;s easy enough to get around that by wrapping the command w
 
 <p>We also want to loop through and run each command:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">commands</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">command</span><span class="o">|</span>
@@ -180,27 +202,26 @@ we need to specify the number of times to ping. For that just add the <code>-c</
 along with number of times to ping. In your terminal, running <code>ping -c2 vpn-1.test.com</code>
 will result in output like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PING</span> <span class="n">www</span><span class="o">.</span><span class="n">vpn</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="p">(</span><span class="mi">74</span><span class="o">.</span><span class="mi">125</span><span class="o">.</span><span class="mi">131</span><span class="o">.</span><span class="mi">99</span><span class="p">):</span> <span class="mi">56</span> <span class="n">data</span> <span class="n">bytes</span>
-</span><span class='line'><span class="mi">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="mi">74</span><span class="o">.</span><span class="mi">125</span><span class="o">.</span><span class="mi">131</span><span class="o">.</span><span class="mi">99</span><span class="p">:</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">0</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">46</span> <span class="n">time</span><span class="o">=</span><span class="mi">409</span><span class="o">.</span><span class="mi">803</span> <span class="n">ms</span>
-</span><span class='line'><span class="mi">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="mi">74</span><span class="o">.</span><span class="mi">125</span><span class="o">.</span><span class="mi">131</span><span class="o">.</span><span class="mi">99</span><span class="p">:</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">1</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">46</span> <span class="n">time</span><span class="o">=</span><span class="mi">407</span><span class="o">.</span><span class="mi">988</span> <span class="n">ms</span>
+</pre></td><td class='code'><pre><code class='plain'><span class='line'>PING www.vpn-1.test.com (74.125.131.99): 56 data bytes
+</span><span class='line'>64 bytes from 74.125.131.99: icmp_seq=0 ttl=46 time=409.803 ms
+</span><span class='line'>64 bytes from 74.125.131.99: icmp_seq=1 ttl=46 time=407.988 ms
 </span><span class='line'>
-</span><span class='line'><span class="o">---</span> <span class="n">www</span><span class="o">.</span><span class="n">vpn</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="n">ping</span> <span class="n">statistics</span> <span class="o">---</span>
-</span><span class='line'><span class="mi">2</span> <span class="n">packets</span> <span class="n">transmitted</span><span class="p">,</span> <span class="mi">2</span> <span class="n">packets</span> <span class="n">received</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">%</span> <span class="n">packet</span> <span class="n">loss</span>
-</span><span class='line'><span class="n">round</span><span class="o">-</span><span class="n">trip</span> <span class="n">min</span><span class="o">/</span><span class="n">avg</span><span class="o">/</span><span class="n">max</span><span class="o">/</span><span class="n">stddev</span> <span class="o">=</span> <span class="mi">407</span><span class="o">.</span><span class="mi">988</span><span class="o">/</span><span class="mi">408</span><span class="o">.</span><span class="mi">895</span><span class="o">/</span><span class="mi">409</span><span class="o">.</span><span class="mi">803</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">908</span> <span class="n">ms</span>
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>--- www.vpn-1.test.com ping statistics ---
+</span><span class='line'>2 packets transmitted, 2 packets received, 0.0% packet loss
+</span><span class='line'>round-trip min/avg/max/stddev = 407.988/408.895/409.803/0.908 ms</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Notice that the url was pinged twice because of <code>-c2</code>. To capture this output in ruby just assign
 it to a variable.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="sb">`ping -c2 vpn-1.test.com`</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -210,7 +231,7 @@ let&#8217;s parse the output. In our <code>ping</code> results, each line ends w
 We can ue the <code>split</code> command on a string to split it up into an array. So doing
 <code>output.split("\n")</code> will result in an array like:</p>
 
-<figure class='code'><figcaption><span>output split into an array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>output split into an array</span></figcaption><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -230,7 +251,7 @@ We can ue the <code>split</code> command on a string to split it up into an arra
 <p>Then to get the last element in the array call <code>.last</code> on the array. The
 full command to parse the output and get the summary info is:</p>
 
-<figure class='code'><figcaption><span>parse to find summary info</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>parse to find summary info</span></figcaption><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">output_summary</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -238,7 +259,7 @@ full command to parse the output and get the summary info is:</p>
 <p>But actually, we don&#8217;t even need the variable <code>output_summary</code>. We can just parse
 on the value returned from the command directly. Like so:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sb">`ping -c2 vpn-1.test.com`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -247,7 +268,7 @@ on the value returned from the command directly. Like so:</p>
 
 <p>Now putting all the pieces together here is our final script:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -262,21 +283,20 @@ on the value returned from the command directly. Like so:</p>
 To run it, save the script to a file (for example <code>ping_urls.rb</code> then run it with
 <code>ruby ping_urls.rb</code>. Here&#8217;s what it looks like when you run the script.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">host</span><span class="p">:</span> <span class="n">vpn</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="n">round</span><span class="o">-</span><span class="n">trip</span> <span class="n">min</span><span class="o">/</span><span class="n">avg</span><span class="o">/</span><span class="n">max</span><span class="o">/</span><span class="n">stddev</span> <span class="o">=</span> <span class="mi">354</span><span class="o">.</span><span class="mi">237</span><span class="o">/</span><span class="mi">355</span><span class="o">.</span><span class="mi">450</span><span class="o">/</span><span class="mi">356</span><span class="o">.</span><span class="mi">662</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="mi">213</span> <span class="n">ms</span>
-</span><span class='line'><span class="n">host</span><span class="p">:</span> <span class="n">vpn</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="n">round</span><span class="o">-</span><span class="n">trip</span> <span class="n">min</span><span class="o">/</span><span class="n">avg</span><span class="o">/</span><span class="n">max</span><span class="o">/</span><span class="n">stddev</span> <span class="o">=</span> <span class="mi">348</span><span class="o">.</span><span class="mi">192</span><span class="o">/</span><span class="mi">348</span><span class="o">.</span><span class="mi">192</span><span class="o">/</span><span class="mi">348</span><span class="o">.</span><span class="mi">192</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mo">000</span> <span class="n">ms</span>
-</span><span class='line'><span class="n">host</span><span class="p">:</span> <span class="n">vpn</span><span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="n">round</span><span class="o">-</span><span class="n">trip</span> <span class="n">min</span><span class="o">/</span><span class="n">avg</span><span class="o">/</span><span class="n">max</span><span class="o">/</span><span class="n">stddev</span> <span class="o">=</span> <span class="mi">345</span><span class="o">.</span><span class="mi">407</span><span class="o">/</span><span class="mi">350</span><span class="o">.</span><span class="mi">691</span><span class="o">/</span><span class="mi">355</span><span class="o">.</span><span class="mi">975</span><span class="o">/</span><span class="mi">5</span><span class="o">.</span><span class="mi">284</span> <span class="n">ms</span>
-</span><span class='line'><span class="n">host</span><span class="p">:</span> <span class="n">vpn</span><span class="o">-</span><span class="mi">4</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="n">round</span><span class="o">-</span><span class="n">trip</span> <span class="n">min</span><span class="o">/</span><span class="n">avg</span><span class="o">/</span><span class="n">max</span><span class="o">/</span><span class="n">stddev</span> <span class="o">=</span> <span class="mi">343</span><span class="o">.</span><span class="mi">635</span><span class="o">/</span><span class="mi">344</span><span class="o">.</span><span class="mi">315</span><span class="o">/</span><span class="mi">344</span><span class="o">.</span><span class="mi">995</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">680</span> <span class="n">ms</span>
-</span><span class='line'><span class="n">host</span><span class="p">:</span> <span class="n">vpn</span><span class="o">-</span><span class="mi">5</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span> <span class="n">round</span><span class="o">-</span><span class="n">trip</span> <span class="n">min</span><span class="o">/</span><span class="n">avg</span><span class="o">/</span><span class="n">max</span><span class="o">/</span><span class="n">stddev</span> <span class="o">=</span> <span class="mi">352</span><span class="o">.</span><span class="mi">627</span><span class="o">/</span><span class="mi">353</span><span class="o">.</span><span class="mi">346</span><span class="o">/</span><span class="mi">354</span><span class="o">.</span><span class="mo">064</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">718</span> <span class="n">ms</span>
+</pre></td><td class='code'><pre><code class='plain'><span class='line'>host: vpn-1.test.com round-trip min/avg/max/stddev = 354.237/355.450/356.662/1.213 ms
+</span><span class='line'>host: vpn-2.test.com round-trip min/avg/max/stddev = 348.192/348.192/348.192/0.000 ms
+</span><span class='line'>host: vpn-3.test.com round-trip min/avg/max/stddev = 345.407/350.691/355.975/5.284 ms
+</span><span class='line'>host: vpn-4.test.com round-trip min/avg/max/stddev = 343.635/344.315/344.995/0.680 ms
+</span><span class='line'>host: vpn-5.test.com round-trip min/avg/max/stddev = 352.627/353.346/354.064/0.718 ms
 </span><span class='line'>
-</span><span class='line'><span class="n">etc</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>etc...</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Simple yet powerful, no?</p>
@@ -319,8 +339,6 @@ To run it, save the script to a file (for example <code>ping_urls.rb</code> then
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/06/04/blocks-functionally-equivalent-to/" title="Previous Post: Procs and Lambdas - functionally equivalent to">&laquo; Procs and Lambdas - functionally equivalent to</a>
-      
       
     </p>
   </footer>
@@ -336,10 +354,6 @@ To run it, save the script to a file (for example <code>ping_urls.rb</code> then
     
       <li class="post">
         <a href="/blog/2012/06/08/ruby-productivity-ping-range-of-urls/">Ruby Productivity - Ping Range of urls</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/04/blocks-functionally-equivalent-to/">Procs and Lambdas - functionally equivalent to</a>
       </li>
     
   </ul>
