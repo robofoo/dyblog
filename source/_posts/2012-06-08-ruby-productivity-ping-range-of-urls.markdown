@@ -33,8 +33,6 @@ typed into your terminal shell. The simplest is probably backticks. So if you
 put `` `pwd` `` in a ruby script it would output something along the lines of
 `/Users/Daniel/src`. 
 
-<!-- more -->
-
 So to run ping all I'd need to do is `` `ping vpn.test.com` ``.
 But I didn't want to run the command on just one url, I wanted it on a range.
 

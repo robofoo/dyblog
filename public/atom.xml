@@ -4,7 +4,7 @@
   <title><![CDATA[dyblog.heroku.com]]></title>
   <link href="http://dyblog.heroku.com/atom.xml" rel="self"/>
   <link href="http://dyblog.heroku.com/"/>
-  <updated>2012-06-11T02:17:31+08:00</updated>
+  <updated>2012-06-11T02:20:37+08:00</updated>
   <id>http://dyblog.heroku.com/</id>
   <author>
     <name><![CDATA[Daniel Yoon]]></name>
@@ -44,9 +44,6 @@ several ways to get a string to run as if it were a command
 typed into your terminal shell. The simplest is probably backticks. So if you
 put <code>`pwd`</code> in a ruby script it would output something along the lines of
 <code>/Users/Daniel/src</code>.</p>
-
-<!-- more -->
-
 
 <p>So to run ping all I&#8217;d need to do is <code>`ping vpn.test.com`</code>.
 But I didn&#8217;t want to run the command on just one url, I wanted it on a range.</p>
