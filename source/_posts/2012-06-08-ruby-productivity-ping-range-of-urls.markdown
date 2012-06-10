@@ -72,7 +72,7 @@ end
 
 By default the `ping` command will continue pinging a url until a user quits it. 
 In order to ping one url and then move onto the next without any user intervention
-we need to specify the number of times to ping. For that just add the `-c` flag
+we need to specify a set number of times to ping a url. For that just add the `-c` flag
 along with number of times to ping. In your terminal, running `ping -c2 vpn-1.test.com`
 will result in output like this:
 
