@@ -147,4 +147,14 @@ host: vpn-5.test.com round-trip min/avg/max/stddev = 352.627/353.346/354.064/0.7
 
 etc...
 ```
+
+Just to show you how terse ruby can be you can write the whole thing in one 
+line without even creating a file to run it from. If you have ruby installed 
+you can run a command with the `-e` flag. So typing `ruby -e 'puts "hi"'` in your
+terminal shell will output `"hi"`. The terse version of the ping script is:
+
+``` ruby terse version run directly from terminal
+ruby -e '(1..20)each { |num| `ping -c2 vpn-#{num}.test.com`.split("\n").last }'
+```
+
 Simple yet powerful, no?

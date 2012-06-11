@@ -298,6 +298,16 @@ To run it, save the script to a file (for example <code>ping_urls.rb</code> then
 </span><span class='line'>etc...</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Just to show you how terse ruby can be you can write the whole thing in one
+line without even creating a file to run it from. If you have ruby installed
+you can run a command with the <code>-e</code> flag. So typing <code>ruby -e 'puts "hi"'</code> in your
+terminal shell will output <code>"hi"</code>. The terse version of the ping script is:</p>
+
+<figure class='code'><figcaption><span>terse version run directly from terminal</span></figcaption><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;(1..20)each { |num| `ping -c2 vpn-#{num}.test.com`.split(&quot;\n&quot;).last }&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>Simple yet powerful, no?</p>
 </div>
 
