@@ -7,7 +7,7 @@ categories:
 ---
 
 **tl;dr** Coming from a Microsoft web dev background I'm often surprised at how simple yet
-productive ruby can be. An example of this is a short (4 lines) ruby script I wrote to ping a list of urls and
+productive ruby can be. An example of this is a short (1 line) ruby script I wrote to ping a list of urls and
 display summary results.
 
 ## Background
@@ -18,14 +18,9 @@ Not only is ruby essential to becoming a good rails dev but the little wins you 
 with it along the way will boost your morale as you struggle through learning 
 how all the various pieces work together.
 
-A few months back I wanted to find out which VPN server had the best ping. The
-MS dev in me suggested, "let's make a web service to ping the VPN servers, 
-then create a website that will list the results." I was about to plug in my
-laptop to a power source and fire up Visual Studio (battery life is much shorter
-when I use VS) when the up and coming
-rubyist in me said, "come on man, just *solve the problem*. All you need is 
-information and it's just text. Write a script 
-to ping the VPN servers and output results to the terminal. Simple."
+A few months back I wanted to find out which VPN server had the best ping.
+Since ruby/rails forces (encourages?) you to get familiar with the command line I already
+knew there were commands at my disposal that I just needed to leverage.
 
 ## The Program
 The basic command I wanted to run was `ping vpn.test.com`. In ruby, there are 

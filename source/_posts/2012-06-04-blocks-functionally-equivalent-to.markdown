@@ -7,40 +7,121 @@ categories:
 published: false
 ---
 
-*tl:dr* a beginner's intro to ruby blocks and lambdas
+*tl:dr* A beginner's intro to ruby blocks and procs
 
-***
+## Blocks
 
-There are a lot of great blog posts about ruby blocks, procs and lambdas. So
-this reference is more for myself since I find that I don't truly understand
-something until I can explain it plainly to someone else.
-
-Blocks
-
-In ruby the most basic definition of a block is the code between curly braces
-`{ }` or `do` and `end`. 
+In ruby, blocks are the bit of code between curly braces
+`{ }` or `do` and `end` that come after a method call.
 
 ``` ruby
-[1, 2, 3].each do |num| 
-  puts num 
+def say_hi
+  puts 'hi'
+end
+
+say_hi do
+  puts "in a block"
 end
 
 # same as above
-[1, 2, 3].each { |num|
-  puts num
+say_hi { 
+  puts "also in a block"
 }
 
 # but curly brace version often written on single line
-[1, 2, 3].each { |num| puts num }
+say_hi { puts "also in a block" }
 ```
 
-In almost all cases you can use either one and they mean the same thing. To keep
-things simple let's ignore the differences.
+In almost all cases you can use either notation and they mean the same thing. To keep
+things simple let's ignore the minute differences between them.
 
-I used to have a hard time understanding ruby procs and lambdas until I started to write out
-what they represented. Conceptually, they're not that hard to understand - they
+Think of code blocks as chunks of code. The interesting thing about blocks is
+that you can keep track of them, pass them around, and call them. To call the
+code block use the `yield` keyword.
+
+## draft - write out what they mean
+``` ruby
+def takes_a_block
+  puts 'before'
+  yield
+  puts 'after'
+end
+
+takes_a_block do
+  puts 'from outside'
+end
+
+# before
+# from outside
+# after
+```
+When first learning about blocks I found it helpful to write out exactly what
+was being created or called.
+
+``` ruby
+def takes_a_block()
+  puts 'before'
+  # yield
+  puts 'from outside'
+  puts 'after'
+end
+
+takes_a_block do
+  puts 'from outside'
+end
+```
+
+In trivial cases it might not be very helpful but let's look at a slightly more
+complex case, one where `yield` takes a parameter.
+
+``` ruby
+def takes_a_block()
+  puts 'before'
+  yield "-from yield"
+  puts 'after'
+end
+
+takes_a_block do |msg|
+  puts 'from outside' + msg
+end
+
+# before
+# from outside-from yeild
+# end
+```
+
+The first time I saw yeild taking a parameter it would really confuse me. So 
+again, I just wrote out the things that were replaced.
+
+``` ruby
+better example...
+```
+
+## Procs and Lambdas
+
+A brief note on terminology, when rubyists talk about procs and lambdas they
+are pretty much referring to something in programming known as closures.
+
+Conceptually, procs are not that hard to understand - they
 are just references to methods along with some context for any variables contained
-within them. An example should help clarify:
+within them.
+
+```
+# simple proc example
+proc1 = Proc.new { a = 1; puts a }
+
+
+```
+
+Procs and lambdas can also be considered virtually the same thing.
+Again, there are differences between the two but for simplicity let's ignore them.
+
+There are two ways to execute the proc, `my_proc.call` and `my_proc[]`
+
+The part that used to confuse me was when examples I saw would mix simple proc
+definitions with calls to
+I used to have a hard time understanding ruby procs until I started to write out
+what they represented. An example should help clarify:
 
 Let's write a program that will wrap html tags around some text. We'll do it a
 hard coded way first and later revise it to use lambdas.
