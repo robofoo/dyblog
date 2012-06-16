@@ -1,35 +1,194 @@
 ---
 layout: post
-title: "Procs and Lambdas - functionally equivalent to"
+title: "Intro to Blocks"
 date: 2012-06-04 22:37
 comments: true
 categories: 
 published: false
 ---
 
-*tl:dr* A beginner's intro to ruby blocks and procs
+**tl;dr** A beginner's intro to ruby blocks
 
 ## Blocks
 
+The first block I ever used was `each`. 
+
+```ruby
+[1, 2, 3].each do |item|
+  puts item
+end
+
+# output
+1
+2
+3
+```
+
+While it was easy for me to
+understand the results I got back while using it, it took awhile before I 
+really understood what was going on. In order to unlock my understanding of
+how `each` worked, I really needed to understand blocks first.
+
 In ruby, blocks are the bit of code between curly braces
-`{ }` or `do` and `end` that come after a method call.
+`{ }` or `do` and `end` that come after a **method call**. That last part is
+super important, anytime you see a 
+pair of `{ }` or `do end` you need to realize it's being passed to a method.
+
+When we use `each` we're calling a method that belongs to `Array`. But there's
+nothing stopping us from passing a block to any method we want. And
+actually, doing so should help us understand blocks more.
 
 ``` ruby
-def say_hi
+# does not explicity accept blocks
+def say_hi_method
   puts 'hi'
 end
 
-say_hi do
+# block passed to method and perfectly valid
+say_hi_method do
   puts "in a block"
 end
 
 # same as above
-say_hi { 
+say_hi_method { 
   puts "also in a block"
 }
+```
 
-# but curly brace version often written on single line
-say_hi { puts "also in a block" }
+Any method (like `say_hi_method` for example) can implicity take a block as 
+a parameter. But it's not very interesting until you do something with the
+block. 
+
+To interact with the block we use the `yield` keyword, which is used to 
+execute the block. Let's see a more complete example.
+
+``` ruby
+def say_before_after
+  puts 'before'
+  yield
+  puts 'after'
+end
+
+say_before_after do
+  puts 'yield called'
+end
+
+# output
+'before'
+'yield called'
+'after'
+```
+
+Empty blocks are also possible (though useless) but usually we check if a 
+block was passed in using `block_given?`
+
+```ruby
+def say_before_after
+  puts 'before'
+  yield if block_given?
+  puts 'after'
+end
+
+say_before_after do
+  # empty block...pretty useless but still possible
+end
+
+#output
+'before'
+'after'
+```
+
+`yield` and `block_given?` are an easy way to start using blocks in an implicit
+way. But if you want more fine grained, explicit control, you can prepend
+a parameter name with `&`. This will turn the parameter into a block which 
+can be called using `call`.
+
+```ruby
+def say_before_after(&block)
+  say 'before'
+  block.call
+  say 'after'
+end
+
+say_before_after do
+  puts 'from block'
+end
+
+# output
+'before'
+'from block'
+'after'
+```
+
+The `block_given?` equivalent in this case is just a check to see if `block`
+exists.
+
+```ruby
+def say_before_after(&block)
+  say 'before'
+  block.call if block
+  say 'after'
+end
+```
+
+Of course there are rules to passing in blocks as parameters. There can only
+be one and it must be the last parameter passed in.
+
+```ruby
+# valid
+def valid_method_with_block(first_name, last_name, &my_block)
+  ...
+end
+
+# invalid
+def invalid_method_with_block(first_name, &my_block, last_name)
+  ...
+end
+
+# also invalid
+def invalid_method_with_two_blocks(first_name, &my_block, &another_block)
+  ...
+end
+```
+
+TODO:
+
+Now to make it more interesting, blocks can also take parameters!
+
+
+...
+
+With all these pieces in place, now we can fully understand what's 
+happening in `each`...or rather, we can implement our own version.
+...
+
+
+The epiphany for me was realizing that blocks are ALWAYS linked to a method
+somewhere.  Realizing this helped me make sense of a lot of magical code I 
+saw in the ruby world. Take rspec for example:
+
+``` ruby
+# rspec and it's magical desc, it blocks
+describe "SomeClass" do
+  it "does stuff" do
+    ...
+  end
+end
+```
+
+I used rspec for over a year before I realized that `describe` and `it` are
+just methods. Their method signatures might look something like:
+
+``` ruby
+def describe(description, &block)
+  ...
+  block.call if block
+end
+
+def it(description, &block)
+  ...
+  block.call if block
+end
 ```
 
 In almost all cases you can use either notation and they mean the same thing. To keep
