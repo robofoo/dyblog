@@ -101,8 +101,8 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: dyblog
+disqus_show_comment_count: true
 disqus_developer: 0
 
 # Google Analytics
